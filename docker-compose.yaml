@@ -1,0 +1,14 @@
+version: '2'
+services:
+  postfix:
+    image: juanluisbaptiste/postfix:latest
+    expose:
+    - "25"
+    env_file:
+      - credentials-smtp.env
+    restart: always
+    volumes:
+     # - "/etc/localtime:/etc/localtime:ro"
+     - "./sites.txt:/sites.txt:rw"
+     - "./checksitehealth.sh:/checksitehealth.sh:rw"
+     - "./logs:/logs:rw"
